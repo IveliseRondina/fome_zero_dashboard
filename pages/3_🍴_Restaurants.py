@@ -121,10 +121,12 @@ with st.container():
         
     with col2:
         st.subheader('Rating distribution')
-        sns.set_color_codes()
+     
+        
+        fig = plt.figure(figsize=(12, 6))
+        sns.distplot(df['aggregate_rating'], color="y")
+        
+        st.pyplot(fig)
 
-        plt.figure(figsize=(16, 6))
-        ax = sns.distplot(df['aggregate_rating'])
-        st.pyplot(ax, use_container_width=True)
-
+     
         
