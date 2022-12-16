@@ -66,7 +66,7 @@ df = df.loc[linhas_selecionadas, :]
 #====================================
 st.markdown("__________")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric('Table Booking', df['has_table_booking'].sum(), help="Restaurants that has table booking")
@@ -76,6 +76,21 @@ with col2:
 
 with col3:
     st.metric('Online Service', df['has_online_delivery'].sum(), help="Restaurants that acept online requests")
+       
+with col4:
+    meancity = df[['country', 'city']].groupby('country').nunique().reset_index()
+    st.metric('Mean City by Country', meancity['city'].mean().round(2))
+
+with st.container():
+    st.subheader('Votes distribution by country - Top 5')
+    df_aux = df[['country', 'votes']].groupby('country').sum().reset_index().sort_values('votes', ascending=False).head(5)
+    top5country = df_aux['country'].unique()
+    df5country = df.loc[df['country'].isin (top5country)]
+    df5country['votes'] = df5country['votes']+1
+    df5country = df5country.loc[(df['votes'] < 2500), :] 
+    fig = px.box( y='votes', x='country', data_frame=df5country, color='country', color_discrete_sequence=px.colors.qualitative.Pastel)
+    st.plotly_chart(fig, use_container_width=True)
+      
 
 with st.container():
     st.subheader('Mean price by country')
@@ -84,26 +99,4 @@ with st.container():
     st.plotly_chart( fig, use_container_width=True)
     
 
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader('Votes distribution by country - Top 5')
-    df_aux = df[['country', 'votes']].groupby('country').sum().reset_index().sort_values('votes', ascending=False).head(5)
-    top5country = df_aux['country'].unique()
-    df5country = df.loc[df['country'].isin (top5country)]
-    df5country['votes'] = df5country['votes']+1
-    df5country = df5country.loc[(df['votes'] < 2500), :] 
-    fig = px.box( y='votes', x='country', data_frame=df5country, color='country')
-    st.plotly_chart(fig, use_container_width=True)
-      
-    
-with col2:
-    st.subheader('reações')
-    
-
-    
-with st.container():
-    st.subheader('reações')
-    
-      
     

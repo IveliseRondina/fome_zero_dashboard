@@ -72,7 +72,7 @@ st.markdown("__________")
 with st.container():  
         st.markdown('## Mean Price by cuisines (dollar)')
         df_aux = df[['cuisines', 'dollar']].groupby('cuisines').mean().round(2).sort_values('dollar', ascending=False).reset_index().head(15)
-        fig = px.bar(df_aux, x='cuisines', y='dollar',color='cuisines')
+        fig = px.bar(df_aux, x='cuisines', y='dollar',color='cuisines', color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart( fig, use_container_width=True)
         
 
@@ -121,12 +121,15 @@ with st.container():
         
     with col2:
         st.subheader('Rating distribution')
-     
+        df['rating_text'] = df['aggregate_rating'].apply(lambda x:'very bad' if x<=1 else
+                                                          'bad' if x<=2 else
+                                                          'regular' if x<=3 else
+                                                          'good' if x<=4 else
+                                                          'very good')
+        rating = df['rating_text'].value_counts().reset_index()
         
-        fig = plt.figure(figsize=(12, 6))
-        sns.distplot(df['aggregate_rating'], color="y")
-        
-        st.pyplot(fig)
+        fig = px.pie(rating, values=rating['rating_text'], names=rating['index'], hole=0.40, color_discrete_sequence=px.colors.qualitative.Prism)
+        st.plotly_chart(fig, use_container_width=True)
 
      
         
