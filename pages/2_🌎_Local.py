@@ -79,8 +79,10 @@ with col3:
        
 with col4:
     meancity = df[['country', 'city']].groupby('country').nunique().reset_index()
-    st.metric('Mean City by Country', meancity['city'].mean().round(2))
+    st.metric('Average Cities', meancity['city'].mean().round(2), help='Average Cities by Country')
 
+st.markdown("__________")    
+    
 with st.container():
     st.subheader('Votes distribution by country - Top 5')
     df_aux = df[['country', 'votes']].groupby('country').sum().reset_index().sort_values('votes', ascending=False).head(5)
@@ -90,7 +92,8 @@ with st.container():
     df5country = df5country.loc[(df['votes'] < 2500), :] 
     fig = px.box( y='votes', x='country', data_frame=df5country, color='country', color_discrete_sequence=px.colors.qualitative.Pastel)
     st.plotly_chart(fig, use_container_width=True)
-      
+
+st.markdown("__________")    
 
 with st.container():
     st.subheader('Mean price by country')

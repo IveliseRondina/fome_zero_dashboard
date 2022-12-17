@@ -75,12 +75,12 @@ with st.container():
         fig = px.bar(df_aux, x='cuisines', y='dollar',color='cuisines', color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart( fig, use_container_width=True)
         
-
+st.markdown("__________")
 col1, col2 = st.columns(2)
 
 with col1:
     with st.container():
-        st.subheader('Type os Cuisines')
+        st.subheader('Type of Cuisines')
         text = " ".join(cat for cat in df.cuisines)
 
         # Generate word cloud
@@ -109,7 +109,7 @@ with col2:
         fig = px.histogram(df10coz, x="cuisines", color_discrete_sequence=['mediumpurple'])
         st.plotly_chart( fig, use_container_width=True )
 
-
+st.markdown("__________")
         
 with st.container():
     col1, col2 = st.columns(2)

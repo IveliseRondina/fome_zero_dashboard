@@ -86,7 +86,8 @@ with st.container():
         sum_votes = df['votes'].sum()
         votes = (f'{sum_votes:,f}').replace(",",".")[:9]
         st.metric('Sum of Votes', value=votes )
-        
+
+st.markdown("__________")
         
 with st.container():
     st.header("Overview Map")
