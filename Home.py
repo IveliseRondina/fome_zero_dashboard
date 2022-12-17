@@ -8,7 +8,6 @@ st.set_page_config(
     layout='wide'
     )
 
-
 banner = Image.open( 'banner.png' )
 st.image( banner)
 
@@ -60,6 +59,7 @@ st.sidebar.download_button(
     mime='text/csv',
 )
 
+st.sidebar.markdown( """---""" )
 
 #========================================================
 
