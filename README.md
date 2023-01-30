@@ -10,8 +10,14 @@ Nele apresento funcionalidades como:
 * download de base de dados tratada;
 * wordcloud;
 
+Foram usadas as seguintes ferramentas:
 
-O resultado da elaboração foi o dashboard vencedor da competição, conforme print abaixo:
+* Python
+* Streamlit Cloud
+
+O resultado da elaboração foi o dashboard vencedor da competição, conforme print abaixo e pode ser acessado através do link:
+
+https://iveliserondina-fome-zero-dashboard-home-zifv2h.streamlit.app/
 
 
 ![image](https://user-images.githubusercontent.com/103456938/215362886-97da13a5-1486-49a8-a4a0-eaed6f545bb0.png)
