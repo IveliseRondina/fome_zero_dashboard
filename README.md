@@ -6,6 +6,8 @@ Dashboad elaborado para participação no **primeiro concurso de Dashboards da C
 3. Layout do dashboard;
 4. Informações claras e simples de consumir.
 
+______________________________
+
 Nele apresento funcionalidades como:
 
 
@@ -21,7 +23,7 @@ Foram usadas as seguintes ferramentas:
 * Jupyter Lab
 * Seaborn
 
-
+____________________________
 
 O resultado da elaboração foi o **dashboard vencedor da competição**, conforme print abaixo e pode ser acessado através do link:
 
